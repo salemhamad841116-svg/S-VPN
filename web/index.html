@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="NeonShield VPN Client Pro">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="NeonShield VPN Pro">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>NeonShield VPN Pro</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // Injected by flutter build
+    const serviceWorkerVersion = null;
+  </script>
+  <!-- Flutter initialization JS -->
+  <script src="flutter.js" defer></script>
+</head>
+<body style="background-color: #080A0F; margin: 0; padding: 0;">
+  <!-- Sleek Neon Splash Loader while Flutter initializes -->
+  <div id="loading" style="position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #080A0F; z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+    <div style="width: 48px; height: 48px; border: 3px solid rgba(0, 229, 255, 0.2); border-top-color: #00E5FF; border-radius: 50%; animation: spin 0.9s linear infinite;"></div>
+    <div style="margin-top: 18px; color: #00E5FF; font-size: 13px; font-weight: 700; letter-spacing: 2px;">NEONSHIELD VPN PRO</div>
+    <div style="margin-top: 6px; color: #64748B; font-size: 11px; letter-spacing: 1px;">INITIALIZING SECURE CLIENT...</div>
+  </div>
+  <style>
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+
+  <script>
+    window.addEventListener('load', function(ev) {
+      if (!window._flutter || !window._flutter.loader) {
+        console.warn('Flutter loader not initialized yet.');
+        return;
+      }
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: serviceWorkerVersion ? {
+          serviceWorkerVersion: serviceWorkerVersion,
+        } : null,
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine({
+            useColorEmoji: true,
+          }).then(function(appRunner) {
+            const loaderEl = document.getElementById('loading');
+            if (loaderEl) {
+              loaderEl.style.transition = 'opacity 0.4s ease';
+              loaderEl.style.opacity = '0';
+              setTimeout(() => loaderEl.remove(), 400);
+            }
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
